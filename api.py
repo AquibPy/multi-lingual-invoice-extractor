@@ -23,6 +23,10 @@ def get_gemini_response(input, image_file, prompt) -> ResponseText:
         return ResponseText(response=f"Error: {str(e)}")
 
 
+@app.get("/")
+def home():
+    return {"msg":"Welcome"}
+
 @app.post("/gemini")
 def gemini(image_file: UploadFile = File(...), prompt: str = Form(...)):
     input = """
